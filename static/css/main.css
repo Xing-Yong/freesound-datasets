@@ -188,3 +188,8 @@ ul {
 .blanched_yellow {
 	color: #f9efe0;
 }
+
+/* CSS FOR RELEASE REPORT ERROR BUTTON */
+.reported-annotation {
+    opacity: .45 !important;
+}
