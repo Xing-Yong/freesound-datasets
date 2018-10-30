@@ -4,6 +4,10 @@ from freesound_datasets.views import discussion
 
 
 urlpatterns = [
+    # this url needs to be in first position to unsure a correct mapping
+    re_path(r'^save_contribute_validate_annotations_category/$', save_contribute_validate_annotations_category,
+            name='save-contribute-validate-annotations-per-category'),
+
     #  Dataset
     re_path(r'^(?P<short_name>[^\/]+)/$', dataset, name='dataset'),
     re_path(r'^(?P<short_name>[^\/]+)/explore/$', dataset_explore, name='dataset-explore'),
@@ -27,6 +31,7 @@ urlpatterns = [
          name='release-taxonomy-table'),
     path('<short_name>/release/<release_tag>/report_annotation/', report_ground_truth_annotation,
          name='report-ground-truth-annotation'),
+    # this url needs to be after the ones above to unsure a correct mapping
     path('<short_name>/release/<release_tag>/<node_id>/', release_taxonomy_node, name='release-taxonomy-node'),
 
     # Explore, visu tools
@@ -55,6 +60,4 @@ urlpatterns = [
         name='contribute-validate-annotations-all'),
     re_path(r'^(?P<short_name>[^\/]+)/annotate/choose_category_table_search_all/$', dataset_taxonomy_table_search_all,
         name='taxonomy-table-search-all'),
-    re_path(r'^save_contribute_validate_annotations_category/$', save_contribute_validate_annotations_category,
-        name='save-contribute-validate-annotations-per-category'),
 ]
